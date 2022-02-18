@@ -9,6 +9,9 @@ public class DockerMessageController {
 
     @GetMapping("/message")
 public String getMessage(){
-    return "elo elo";
+    return "Test";
 }
+
 }
+
+
