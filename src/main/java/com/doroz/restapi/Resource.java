@@ -16,22 +16,10 @@ import javax.persistence.Id;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Resource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String login;
-    private String password;
-    private String email;
-    private int phoneNumber;
-
-
-    public User(String login, String password, String email, int phoneNumber){
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
-
+    private String role;
 }
