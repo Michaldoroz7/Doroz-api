@@ -6,10 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,6 +19,11 @@ public class Resource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "resource_id")
     private Long id;
     private String role;
+
+
+    @OneToMany(mappedBy = "resource", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Subscription> subscriptions = new HashSet<>();
 }

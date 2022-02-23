@@ -6,20 +6,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+@Table(name = "Client")
+public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "client_id")
     private Long id;
     private String login;
     private String password;
@@ -27,7 +26,7 @@ public class User {
     private int phoneNumber;
 
 
-    public User(String login, String password, String email, int phoneNumber){
+    public Client(String login, String password, String email, int phoneNumber){
         this.login = login;
         this.password = password;
         this.email = email;

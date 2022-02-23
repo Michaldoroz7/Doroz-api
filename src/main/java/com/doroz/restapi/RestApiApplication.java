@@ -1,5 +1,6 @@
 package com.doroz.restapi;
 
+import com.doroz.restapi.repository.ClientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,15 +15,15 @@ public class RestApiApplication {
 
 
     @Bean
-    public CommandLineRunner userTest(UserRepository repository){
+    public CommandLineRunner userTest(ClientRepository repository){
         return args -> {
             //Testing save in DB
-            repository.save(new User("User1", "123", "testowymail@gmail.com", 123321123 ));
-            repository.save(new User("User2", "a123", "jakismail@gmail.com", 189537345 ));
-            repository.save(new User("User3", "b123", "kolejnymail@gmail.com", 774839343 ));
+            repository.save(new Client("User1", "123", "testowymail@gmail.com", 123321123 ));
+            repository.save(new Client("User2", "a123", "jakismail@gmail.com", 189537345 ));
+            repository.save(new Client("User3", "b123", "kolejnymail@gmail.com", 774839343 ));
 
             //Print all users
-            for (User user : repository.findAll()){
+            for (Client user : repository.findAll()){
                 System.out.println("Login: " + user.getLogin());
                 System.out.println("Email: " + user.getEmail());
                 System.out.println("Phone Number: " + user.getPhoneNumber());
