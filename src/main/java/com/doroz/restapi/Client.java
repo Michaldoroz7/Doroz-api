@@ -26,6 +26,11 @@ public class Client {
     private int phoneNumber;
 
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id")
+    private Account account;
+
+
     public Client(String login, String password, String email, int phoneNumber){
         this.login = login;
         this.password = password;

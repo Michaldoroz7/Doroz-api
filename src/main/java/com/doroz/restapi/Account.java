@@ -16,7 +16,8 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "account_id")
     private Long id;
-    private Long userId;
+    @OneToOne(mappedBy = "account")
+    private Client client;
     private Long subscriptionId;
 
 
