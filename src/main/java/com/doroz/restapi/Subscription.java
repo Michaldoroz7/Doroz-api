@@ -4,8 +4,7 @@ package com.doroz.restapi;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 @Getter
@@ -19,14 +18,17 @@ public class Subscription {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "subscription_id")
     private Long id;
-    private Enum<SubscriptionType> subType;
+
+    @Enumerated(EnumType.STRING)
+    private SubscriptionType subType;
     private String startDate;
     private String endDate;
 
+    @OneToOne(mappedBy = "subscriptionId")
+    private Account account;
 
     @ManyToOne
     @JoinColumn(name = "resource_id")
     private Resource resource;
-
 
 }

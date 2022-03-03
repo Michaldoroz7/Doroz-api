@@ -25,17 +25,7 @@ public class Client {
     private String email;
     private int phoneNumber;
 
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account_id")
+    @OneToOne(mappedBy = "client")
     private Account account;
-
-
-    public Client(String login, String password, String email, int phoneNumber){
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
 
 }

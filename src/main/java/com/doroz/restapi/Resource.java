@@ -26,4 +26,9 @@ public class Resource {
 
     @OneToMany(mappedBy = "resource", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Subscription> subscriptions = new HashSet<>();
+
+    public Resource(String role) {
+        this.role = role;
+    }
+
 }

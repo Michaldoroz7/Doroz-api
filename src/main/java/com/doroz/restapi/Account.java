@@ -16,9 +16,14 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "account_id")
     private Long id;
-    @OneToOne(mappedBy = "account")
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
     private Client client;
-    private Long subscriptionId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "subscription_id")
+    private Subscription subscriptionId;
 
 
 }
