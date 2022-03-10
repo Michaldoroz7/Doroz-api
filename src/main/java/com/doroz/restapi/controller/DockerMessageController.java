@@ -1,4 +1,4 @@
-package com.doroz.restapi;
+package com.doroz.restapi.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;

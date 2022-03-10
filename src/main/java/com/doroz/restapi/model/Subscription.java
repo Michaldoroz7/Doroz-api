@@ -1,6 +1,7 @@
-package com.doroz.restapi;
+package com.doroz.restapi.model;
 
 
+import com.doroz.restapi.service.SubscriptionType;
 import lombok.*;
 
 import javax.persistence.*;

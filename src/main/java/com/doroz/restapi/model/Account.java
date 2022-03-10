@@ -1,4 +1,4 @@
-package com.doroz.restapi;
+package com.doroz.restapi.model;
 
 
 import lombok.*;
