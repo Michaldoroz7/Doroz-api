@@ -2,7 +2,6 @@ package com.doroz.restapi.service;
 
 import com.doroz.restapi.model.Client;
 import com.doroz.restapi.repository.ClientRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
