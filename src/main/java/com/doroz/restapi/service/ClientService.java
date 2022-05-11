@@ -49,5 +49,6 @@ public class ClientService implements ClientServiceInterface {
     @Override
     public void deleteClient(Long id) {
         clientRepository.deleteById(id);
+        System.out.print("User " + id + " deleted");
     }
 }
