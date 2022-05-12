@@ -1,8 +1,10 @@
 package com.doroz.restapi.model;
 
-
-import lombok.*;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
@@ -17,12 +19,14 @@ public class Account {
     @Column(name = "account_id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "client_id")
+    @OneToOne()
+    @JoinColumn(name = "client_id", referencedColumnName = "client_id")
+    @JsonManagedReference
     private Client client;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "subscription_id")
+    @JsonManagedReference
     private Subscription subscriptionId;
 
 

@@ -3,16 +3,15 @@ package com.doroz.restapi.service;
 import com.doroz.restapi.model.Client;
 import com.doroz.restapi.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Service
 @RequiredArgsConstructor
 public class ClientService implements ClientServiceInterface {
 
+    @Autowired
     ClientRepository clientRepository;
 
     public ClientService(ClientRepository clientRepository) {
@@ -21,15 +20,14 @@ public class ClientService implements ClientServiceInterface {
 
 
     @Override
-    public List<Client> getClients() {
-        List<Client> clients = new ArrayList<>();
-        clientRepository.findAll().forEach(clients::add);
-        return clients;
+    public Iterable<Client> getClients() {
+        return clientRepository.findAll();
     }
 
     @Override
     public Client getClientById(Long id) {
-        return clientRepository.findById(id).get();
+        return clientRepository.findById(id)
+                .orElseThrow();
     }
 
     @Override

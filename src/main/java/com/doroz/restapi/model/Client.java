@@ -1,11 +1,11 @@
 package com.doroz.restapi.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
@@ -26,6 +26,7 @@ public class Client {
     private int phoneNumber;
 
     @OneToOne(mappedBy = "client")
+    @JsonBackReference
     private Account account;
 
 }

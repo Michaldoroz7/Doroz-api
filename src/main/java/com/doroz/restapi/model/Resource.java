@@ -1,6 +1,7 @@
 package com.doroz.restapi.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,10 +26,7 @@ public class Resource {
 
 
     @OneToMany(mappedBy = "resource", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<Subscription> subscriptions = new HashSet<>();
-
-    public Resource(String role) {
-        this.role = role;
-    }
 
 }

@@ -3,15 +3,15 @@ package com.doroz.restapi.service;
 import com.doroz.restapi.model.Resource;
 import com.doroz.restapi.repository.ResourceRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ResourceService implements ResourceServiceInterface {
 
+    @Autowired
     ResourceRepository resourceRepository;
 
     public ResourceService(ResourceRepository resourceRepository) {
@@ -19,10 +19,8 @@ public class ResourceService implements ResourceServiceInterface {
     }
 
     @Override
-    public List<Resource> getResources() {
-        List<Resource> resources = new ArrayList<>();
-        resourceRepository.findAll().forEach(resources::add);
-        return resources;
+    public Iterable<Resource> getResources() {
+        return resourceRepository.findAll();
     }
 
     @Override

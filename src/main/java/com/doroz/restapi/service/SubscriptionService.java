@@ -3,15 +3,15 @@ package com.doroz.restapi.service;
 import com.doroz.restapi.model.Subscription;
 import com.doroz.restapi.repository.SubscriptionRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class SubscriptionService implements SubscriptionServiceInterface{
 
+    @Autowired
     SubscriptionRepository subscriptionRepository;
 
     public SubscriptionService(SubscriptionRepository subscriptionRepository){
@@ -19,10 +19,8 @@ public class SubscriptionService implements SubscriptionServiceInterface{
     }
 
     @Override
-    public List<Subscription> getSubscriptions() {
-        List<Subscription> subscriptions = new ArrayList<>();
-        subscriptionRepository.findAll().forEach(subscriptions::add);
-        return subscriptions;
+    public Iterable<Subscription> getSubscriptions() {
+        return subscriptionRepository.findAll();
     }
 
     @Override

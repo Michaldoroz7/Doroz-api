@@ -3,15 +3,14 @@ package com.doroz.restapi.service;
 import com.doroz.restapi.model.Account;
 import com.doroz.restapi.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class AccountService implements AccountServiceInterface{
 
+    @Autowired
     AccountRepository accountRepository;
 
     public AccountService(AccountRepository accountRepository){
@@ -19,15 +18,14 @@ public class AccountService implements AccountServiceInterface{
     }
 
     @Override
-    public List<Account> getAccounts() {
-        List<Account> accounts = new ArrayList<>();
-        accountRepository.findAll().forEach(accounts::add);
-        return accounts;
+    public Iterable<Account> getAccounts() {
+        return accountRepository.findAll();
     }
 
     @Override
     public Account getAccountById(Long id) {
-        return accountRepository.findById(id).get();
+        return accountRepository.findById(id)
+                .orElseThrow();
     }
 
     @Override

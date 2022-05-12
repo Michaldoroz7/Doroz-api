@@ -2,8 +2,12 @@ package com.doroz.restapi.model;
 
 
 import com.doroz.restapi.service.SubscriptionType;
-import lombok.*;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.*;
 
 
@@ -26,10 +30,12 @@ public class Subscription {
     private String endDate;
 
     @OneToOne(mappedBy = "subscriptionId")
+    @JsonBackReference
     private Account account;
 
     @ManyToOne
     @JoinColumn(name = "resource_id")
+    @JsonManagedReference
     private Resource resource;
 
 }
