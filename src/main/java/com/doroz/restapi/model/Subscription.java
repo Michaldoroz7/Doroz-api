@@ -3,7 +3,6 @@ package com.doroz.restapi.model;
 
 import com.doroz.restapi.service.SubscriptionType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,7 +34,6 @@ public class Subscription {
 
     @ManyToOne
     @JoinColumn(name = "resource_id")
-    @JsonManagedReference
     private Resource resource;
 
 }

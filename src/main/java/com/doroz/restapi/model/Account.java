@@ -1,6 +1,8 @@
 package com.doroz.restapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +14,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Account {
 
     @Id
@@ -26,7 +29,6 @@ public class Account {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "subscription_id")
-    @JsonManagedReference
     private Subscription subscriptionId;
 
 

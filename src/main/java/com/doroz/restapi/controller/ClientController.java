@@ -23,4 +23,15 @@ public class ClientController {
     public Client showSpecificClient(@PathVariable("id") long id) {
         return clientService.getClientById(id);
     }
+
+    @PostMapping("/clients")
+    public Client addClient(@RequestBody Client client){
+        return clientService.addClient(client);
+    }
+
+    @DeleteMapping("/clients/delete/{id}")
+    public void deleteClient(@PathVariable("id") long id){
+        clientService.deleteClient(id);
+        System.out.println("Deleted client: " + id);
+    }
 }
