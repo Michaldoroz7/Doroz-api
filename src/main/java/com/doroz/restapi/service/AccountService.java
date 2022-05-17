@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AccountService implements AccountServiceInterface{
+public class AccountService implements AccountServiceInterface {
 
     @Autowired
     AccountRepository accountRepository;
 
-    public AccountService(AccountRepository accountRepository){
+    public AccountService(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
@@ -37,7 +37,6 @@ public class AccountService implements AccountServiceInterface{
     public void updateAccount(Long id, Account account) {
         Account accountFromDb = accountRepository.findById(id).get();
         System.out.println("Updating Account: " + accountFromDb);
-        accountFromDb.setClient(account.getClient());
         accountFromDb.setSubscriptionId(account.getSubscriptionId());
     }
 

@@ -37,7 +37,6 @@ public class SubscriptionService implements SubscriptionServiceInterface{
     public void updateSubscription(Long id, Subscription subscription) {
         Subscription subscriptionFromDb = subscriptionRepository.findById(id).get();
         System.out.println("Updating Subscription: " + subscriptionFromDb);
-        subscriptionFromDb.setAccount(subscription.getAccount());
         subscriptionFromDb.setResource(subscription.getResource());
         subscriptionFromDb.setEndDate(subscription.getEndDate());
         subscriptionFromDb.setStartDate(subscription.getStartDate());

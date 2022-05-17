@@ -25,12 +25,12 @@ public class ClientController {
     }
 
     @PostMapping("/clients")
-    public Client addClient(@RequestBody Client client){
+    public Client addClient(@RequestBody Client client) {
         return clientService.addClient(client);
     }
 
     @DeleteMapping("/clients/delete/{id}")
-    public void deleteClient(@PathVariable("id") long id){
+    public void deleteClient(@PathVariable("id") long id) {
         clientService.deleteClient(id);
         System.out.println("Deleted client: " + id);
     }

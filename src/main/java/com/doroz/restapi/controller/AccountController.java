@@ -31,7 +31,7 @@ public class AccountController {
     }
 
     @DeleteMapping("/accounts/delete/{id}")
-    public void deleteAccount(@PathVariable("id") long id){
+    public void deleteAccount(@PathVariable("id") long id) {
         accountService.deleteAccount(id);
         System.out.println("Deleted account: " + id);
     }
