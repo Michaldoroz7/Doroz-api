@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -18,8 +20,8 @@ public class SubscriptionService {
         this.subscriptionRepository = subscriptionRepository;
     }
 
-    public Iterable<Subscription> getSubscriptions() {
-        return subscriptionRepository.findAll();
+    public List<Subscription> getSubscriptions() {
+        return (List<Subscription>) subscriptionRepository.findAll();
     }
 
     public Subscription getSubscriptionById(Long id) {

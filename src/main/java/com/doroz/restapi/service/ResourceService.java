@@ -36,7 +36,6 @@ public class ResourceService {
         Resource resourceFromDb = resourceRepository.findById(id).get();
         System.out.println("Updating resource: " + resourceFromDb);
         resourceFromDb.setRole(resource.getRole());
-        resourceFromDb.setSubscriptions(resource.getSubscriptions());
     }
 
     public void deleteResource(Long id) {

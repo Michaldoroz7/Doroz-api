@@ -46,7 +46,6 @@ public class ResourceController {
         ResourceDto rDto = new ResourceDto();
         rDto.setId(resource.getId());
         rDto.setRole(resource.getRole());
-        rDto.setSubscriptions(resource.getSubscriptions());
 
         return rDto;
     }

@@ -24,7 +24,7 @@ public class Account {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id")
-    private Client client;
+    private Client clientId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "subscription_id")
