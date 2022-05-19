@@ -1,9 +1,11 @@
 package com.doroz.restapi.controller;
 
 
-import com.doroz.restapi.model.Subscription;
+import com.doroz.restapi.entity.Subscription;
 import com.doroz.restapi.service.SubscriptionService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -16,8 +18,8 @@ public class SubscriptionController {
     }
 
     @GetMapping("/subscriptions")
-    public Iterable<Subscription> showSubscriptions() {
-        return subscriptionService.getSubscriptions();
+    public List<Subscription> showSubscriptions() {
+        return (List<Subscription>) subscriptionService.getSubscriptions();
     }
 
     @GetMapping("/subscriptions/{id}")

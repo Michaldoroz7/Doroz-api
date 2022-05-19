@@ -1,8 +1,10 @@
 package com.doroz.restapi.controller;
 
-import com.doroz.restapi.model.Account;
+import com.doroz.restapi.entity.Account;
 import com.doroz.restapi.service.AccountService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -16,7 +18,7 @@ public class AccountController {
     }
 
     @GetMapping("/accounts")
-    public Iterable<Account> showAccounts() {
+    public List<Account> showAccounts() {
         return accountService.getAccounts();
     }
 

@@ -1,4 +1,4 @@
-package com.doroz.restapi.model;
+package com.doroz.restapi.entity;
 
 
 import com.doroz.restapi.service.SubscriptionType;

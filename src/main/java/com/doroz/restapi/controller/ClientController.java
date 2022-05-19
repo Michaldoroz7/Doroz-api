@@ -1,8 +1,10 @@
 package com.doroz.restapi.controller;
 
-import com.doroz.restapi.model.Client;
+import com.doroz.restapi.entity.Client;
 import com.doroz.restapi.service.ClientService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -15,8 +17,8 @@ public class ClientController {
     }
 
     @GetMapping("/clients")
-    public Iterable<Client> showClients() {
-        return clientService.getClients();
+    public List<Client> showClients() {
+        return (List<Client>) clientService.getClients();
     }
 
     @GetMapping("/clients/{id}")

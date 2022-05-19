@@ -1,4 +1,4 @@
-package com.doroz.restapi.model;
+package com.doroz.restapi.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
