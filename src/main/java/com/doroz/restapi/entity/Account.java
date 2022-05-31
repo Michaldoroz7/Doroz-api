@@ -1,5 +1,4 @@
-package com.doroz.restapi.model;
-
+package com.doroz.restapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -15,17 +14,22 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Client")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Client {
+public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "client_id")
+    @Column(name = "account_id")
     private Long id;
-    private String login;
-    private String password;
-    private String email;
-    private int phoneNumber;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
+    private Client clientId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "subscription_id")
+    private Subscription subscriptionId;
+
 
 }
+

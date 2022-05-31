@@ -1,4 +1,4 @@
-package com.doroz.restapi.model;
+package com.doroz.restapi.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -9,25 +9,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "Client")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Resource {
+public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "resource_id")
+    @Column(name = "client_id")
     private Long id;
-    private String role;
-
-
-    @OneToMany(mappedBy = "resource", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Subscription> subscriptions = new HashSet<>();
+    private String login;
+    private String password;
+    private String email;
+    private int phoneNumber;
 
 }

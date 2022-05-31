@@ -1,9 +1,13 @@
 package com.doroz.restapi.controller;
 
 
-import com.doroz.restapi.model.Resource;
+import com.doroz.restapi.dto.ResourceDto;
+import com.doroz.restapi.entity.Resource;
 import com.doroz.restapi.service.ResourceService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -16,13 +20,15 @@ public class ResourceController {
     }
 
     @GetMapping("/resources")
-    public Iterable<Resource> showResources() {
-        return resourceService.getResources();
+    public List<ResourceDto> showResources() {
+        return resourceService.getResources().stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/resources/{id}")
-    public Resource getResourceById(@PathVariable("id") long id) {
-        return resourceService.getResourceById(id);
+    public ResourceDto getResourceById(@PathVariable("id") long id) {
+        return mapToDto(resourceService.getResourceById(id));
     }
 
     @PostMapping("/resources")
@@ -34,5 +40,13 @@ public class ResourceController {
     public void deleteResource(@PathVariable("id") long id) {
         resourceService.deleteResource(id);
         System.out.println("Deleted resource: " + id);
+    }
+
+    private ResourceDto mapToDto(Resource resource) {
+        ResourceDto rDto = new ResourceDto();
+        rDto.setId(resource.getId());
+        rDto.setRole(resource.getRole());
+
+        return rDto;
     }
 }
