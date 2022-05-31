@@ -32,6 +32,7 @@ public class ClientController {
 
     @PostMapping("/clients")
     public Client addClient(@RequestBody Client client) {
+        client.setPassword(clientService.encryptPassword(client.getPassword()));
         return clientService.addClient(client);
     }
 
