@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 
@@ -32,6 +34,7 @@ public class ClientService {
 
     public Client addClient(Client client) {
         return clientRepository.save(client);
+
     }
 
     public void updateClient(Long id, Client client) {
@@ -45,5 +48,26 @@ public class ClientService {
     public void deleteClient(Long id) {
         clientRepository.deleteById(id);
         System.out.print("User " + id + " deleted");
+    }
+
+    public String encryptPassword(String password) {
+
+        String encryptedPassword = null;
+        try {
+            MessageDigest m = MessageDigest.getInstance("MD5");
+            m.update(password.getBytes());
+            byte[] bytes = m.digest();
+
+            StringBuilder s = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                s.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            encryptedPassword = s.toString();
+
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return encryptedPassword;
     }
 }
