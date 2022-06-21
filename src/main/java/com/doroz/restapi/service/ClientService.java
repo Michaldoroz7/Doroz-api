@@ -42,6 +42,7 @@ public class ClientService {
         System.out.println("Updating client: " + clientFromDb);
         clientFromDb.setEmail(client.getEmail());
         clientFromDb.setLogin(client.getLogin());
+        clientFromDb.setPassword(client.getPassword());
         clientFromDb.setPhoneNumber(client.getPhoneNumber());
     }
 
