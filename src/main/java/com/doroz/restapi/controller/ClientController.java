@@ -63,16 +63,22 @@ public class ClientController {
     }
 
     private boolean emailValidation(Client client){
+        LoggingController loggingController = new LoggingController();
+
         final String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(client.getEmail());
+        String msg;
         boolean status;
 
         if (matcher.matches()) {
-            System.out.println("Email is OK!");
+
+            msg = "Email is OK!";
+            loggingController.logSomeInfo(msg, "info");
             status = true;
         } else {
-            System.out.println("Check your email");
+            msg = "Email is NOT OK!, check it";
+            loggingController.logSomeInfo(msg, "warn");
             status = false;
         }
         return status;
