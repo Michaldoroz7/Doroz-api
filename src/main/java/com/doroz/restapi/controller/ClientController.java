@@ -6,7 +6,6 @@ import com.doroz.restapi.service.ClientService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,7 +36,8 @@ public class ClientController {
     @PostMapping("/clients")
     public Client addClient(@RequestBody Client client) {
         client.setPassword(clientService.encryptPassword(client.getPassword()));
-        if (!emailValidation(client)){
+        if (!emailValidation(client)) {
+            //Need to think about it and refactor for better response
             return (Client) ResponseEntity.badRequest();
         } else {
             return clientService.addClient(client);
@@ -62,7 +62,7 @@ public class ClientController {
         return cDto;
     }
 
-    private boolean emailValidation(Client client){
+    private boolean emailValidation(Client client) {
         LoggingController loggingController = new LoggingController();
 
         final String regex = "^[A-Za-z0-9+_.-]+@(.+)$";

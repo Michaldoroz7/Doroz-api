@@ -14,7 +14,6 @@ public class LoggingController {
 
 
     public void logSomeInfo(String info, String logType) {
-
         if (Objects.equals(logType, "info")) {
             logger.info(info);
         } else if (Objects.equals(logType, "warn")) {
