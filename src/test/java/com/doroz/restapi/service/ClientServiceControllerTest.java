@@ -52,6 +52,7 @@ public class ClientServiceControllerTest extends AbstractTest {
     public void DeleteClient() throws Exception {
         String uri = "/clients/3";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
+
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
