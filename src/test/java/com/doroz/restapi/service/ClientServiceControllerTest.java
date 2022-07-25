@@ -32,7 +32,7 @@ public class ClientServiceControllerTest extends AbstractTest {
     }
 
     @Test
-    public void CreateClient() throws Exception {
+    public void createClient() throws Exception {
         String uri = "/clients";
         Client client = new Client();
         client.setId(3L);
@@ -49,7 +49,7 @@ public class ClientServiceControllerTest extends AbstractTest {
     }
 
     @Test
-    public void DeleteClient() throws Exception {
+    public void deleteClient() throws Exception {
         String uri = "/clients/3";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
 

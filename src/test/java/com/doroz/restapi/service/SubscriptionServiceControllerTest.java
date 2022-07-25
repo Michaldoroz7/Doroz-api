@@ -1,7 +1,8 @@
 package com.doroz.restapi.service;
 
+
 import com.doroz.restapi.AbstractTest;
-import com.doroz.restapi.entity.Resource;
+import com.doroz.restapi.entity.Subscription;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.MediaType;
@@ -11,7 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class ResourceServiceControllerTest extends AbstractTest {
+public class SubscriptionServiceControllerTest extends AbstractTest {
     @Override
     @Before
     public void setUp() {
@@ -19,25 +20,24 @@ public class ResourceServiceControllerTest extends AbstractTest {
     }
 
     @Test
-    public void getResource() throws Exception {
-        String uri = "/resources";
+    public void getSubscription() throws Exception {
+        String uri = "/subscriptions";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        Resource[] resources = super.mapFromJson(content, Resource[].class);
-        assertTrue(resources.length > 0);
+        Subscription[] subscriptions = super.mapFromJson(content, Subscription[].class);
+        assertTrue(subscriptions.length > 0);
     }
 
     @Test
-    public void createResource() throws Exception {
-        String uri = "/resources";
-        Resource resource = new Resource();
-        resource.setId(3L);
-        resource.setRole("Test role");
-        String inputJson = super.mapToJson(resource);
+    public void createSubscription() throws Exception {
+        String uri = "/subscriptions";
+        Subscription subscription = new Subscription();
+        subscription.setId(3L);
+        String inputJson = super.mapToJson(subscription);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(inputJson)).andReturn();
@@ -45,17 +45,17 @@ public class ResourceServiceControllerTest extends AbstractTest {
         int status = mvcResult.getResponse().getStatus();
         assertEquals(201, status);
         String content = mvcResult.getResponse().getContentAsString();
-        assertEquals(content, "Resource created!");
+        assertEquals(content, "Subscription created");
     }
 
     @Test
-    public void deleteResource() throws Exception {
-        String uri = "/resources/3";
+    public void DeleteSubscription() throws Exception {
+        String uri = "/subscriptions/3";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
 
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        assertEquals(content, "Resource deleted");
+        assertEquals(content, "Subscription Deleted!");
     }
 }

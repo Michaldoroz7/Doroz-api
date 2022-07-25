@@ -32,7 +32,7 @@ public class AccountServiceControllerTest extends AbstractTest {
     }
 
     @Test
-    public void CreateAccount() throws Exception {
+    public void createAccount() throws Exception {
         String uri = "/accounts";
         Account account = new Account();
         account.setId(3L);
@@ -48,7 +48,7 @@ public class AccountServiceControllerTest extends AbstractTest {
     }
 
     @Test
-    public void DeleteAccount() throws Exception {
+    public void deleteAccount() throws Exception {
         String uri = "/accounts/3";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.delete(uri)).andReturn();
 
