@@ -48,7 +48,6 @@ public class AccountController {
         aDto.setId(account.getId());
         aDto.setClient(account.getClientId());
         aDto.setSubscription(account.getSubscriptionId());
-
         return aDto;
     }
 }
