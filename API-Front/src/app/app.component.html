@@ -1,0 +1,60 @@
+<div class="container">
+  <div id="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">{{ title }}</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-mdb-toggle="collapse"
+          data-mdb-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="list-inline-item">
+              <a routerLink="/home" class="btn btn-info">Main Site</a>
+            </li>
+
+            <li class="list-inline-item">
+              <a routerLink="/users" class="btn btn-info">Creators List</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/adduser" class="btn btn-info">Add Creator</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/resources" class="btn btn-info">Materials List</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/addresource" class="btn btn-info">Add Material</a>
+            </li>
+            <li class="list-inline-item">
+              <a routerLink="/project-description" class="btn btn-info"
+                >About Project</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div id="body">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div id="footer">
+    <footer class="bg-light text-center text-lg-start">
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-dark">Michał Doroz</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="card my-5">
+  <div class="card-body">
+    <div class="form-group">
+      <form [formGroup]="addUser" (ngSubmit)="onSubmit()">
+        <div>
+          <blockquote class="blockquote text-center">
+            <p class="mb-">User Fields</p>
+          </blockquote>
+          <label for="login"> Name </label>
+          <input
+            class="form-control form-control-lg"
+            id="login"
+            type="text"
+            formControlName="login"
+          />
+        </div>
+
+        <div>
+          <label for="password"> Password </label>
+          <input
+            class="form-control form-control-lg"
+            id="password"
+            type="password"
+            formControlName="password"
+          />
+        </div>
+
+        <div>
+          <label for="title"> Title </label>
+          <input
+            class="form-control form-control-lg"
+            id="title"
+            type="text"
+            formControlName="title"
+          />
+        </div>
+
+        <div>
+          <label for="email"> Email <Address></Address> </label>
+          <input
+            class="form-control form-control-lg"
+            id="email"
+            type="text"
+            formControlName="email"
+          />
+        </div>
+
+        <div>
+          <label for="phoneNumber"> Phone Number </label>
+          <input
+            class="form-control form-control-lg"
+            id="phoneNumber"
+            type="text"
+            formControlName="phoneNumber"
+          />
+        </div>
+
+        <div>
+          <label for="description"> Profile Description </label>
+          <input
+            class="form-control form-control-lg"
+            id="description"
+            type="text"
+            formControlName="description"
+          />
+        </div>
+        <div>
+          <label for="profilePicture"> Profile Picture Link </label>
+          <input
+            class="form-control form-control-lg"
+            id="profilePicture"
+            type="text"
+            formControlName="profilePicture"
+          />
+        </div>
+        <button class="btn btn-dark btn-block" type="submit">
+          Add Creator
+        </button>
+      </form>
+    </div>
+  </div>

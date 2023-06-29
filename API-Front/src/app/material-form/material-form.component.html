@@ -1,0 +1,42 @@
+<div class="card my-5">
+  <div class="card-body">
+    <div class="form-group">
+      <form [formGroup]="addResource" (ngSubmit)="onSubmit()">
+        <div>
+          <blockquote class="blockquote text-center">
+            <p class="mb-">Material Fields</p>
+          </blockquote>
+          <label for="login"> Select existing Client </label>
+          <select class="selectpicker form-control" aria-label=".form-select-sm example" formControlName="clientId">
+            <option *ngFor="let user of users" [value]="user.id">
+              {{user.login}}
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label for="materialLink"> Material Link </label>
+          <input
+            class="form-control form-control-lg"
+            id="materialLink"
+            type="text"
+            formControlName="materialLink"
+          />
+        </div>
+
+        <div>
+          <label for="materialName"> Material Display Name </label>
+          <input
+            class="form-control form-control-lg"
+            id="materialName"
+            type="text"
+            formControlName="materialName"
+          />
+        </div>
+        <button class="btn btn-dark btn-block" type="submit">
+          Add Material
+        </button>
+      </form>
+    </div>
+  </div>
+

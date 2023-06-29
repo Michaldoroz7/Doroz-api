@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  postgresdb:
+    image: 'postgres:13.1'
+    ports:
+      - "5433:5432"
+    container_name: db
+    environment:
+      - POSTGRES_DB=RestApi
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password1!
+  app:
+    image: 'restapi-0.0.5:latest'
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - postgresdb

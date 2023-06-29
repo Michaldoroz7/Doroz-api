@@ -1,0 +1,22 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Material</th>
+          <th scope="col">Creator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resource of resources">
+          <td>
+            <a href="{{ resource.materialLink }}">{{ resource.materialName }}</a>
+          </td>
+          <td>
+            {{ resource.clientId }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
